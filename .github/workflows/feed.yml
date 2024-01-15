@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
+      - name: Check available locales
+        uses: locale -a
       - name: Install dependencies
         run: |
           pip3 install -r requirements.txt
