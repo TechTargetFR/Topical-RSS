@@ -8,6 +8,9 @@ on:
 # to consider: the use of action jobs to breakout each task
 # https://docs.github.com/en/actions/learn-github-actions/essential-features-of-github-actions#sharing-data-between-jobs
 
+env:
+  LANG: "fr_FR.UTF-8"
+
 jobs:
   run-cyberwatch:
     runs-on: ubuntu-latest
@@ -16,17 +19,10 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-      - name: SetLocale
+      - name: fr_FR.UTF-8
         run: |
-          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen fr_FR.UTF-8
-          sudo localectl set-locale LANG="fr_FR.UTF-8"
-          export LANG="fr_FR.UTF-8"
-          sudo update-locale
-          echo "Testing language settings"
-          echo "All languages..."
-          locale -a
-          echo "Actual locale"
-          locale
+          sudo locale-gen fr_FR.UTF-8
+          sudo update-locale LANG=fr_FR.UTF-8
       - name: Install dependencies
         run: |
           pip3 install -r requirements.txt
