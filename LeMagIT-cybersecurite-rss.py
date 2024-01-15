@@ -58,7 +58,7 @@ def parse_page(html):
 
 def main():
 
-    locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
+    locale.setlocale(locale.LC_TIME, 'fr_FR')
     entries = parse_page(fetch_page())
 
     fg = FeedGenerator()
