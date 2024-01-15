@@ -16,9 +16,17 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-      - name: Check available locales
+      - name: SetLocale
         run: |
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen fr_FR.UTF-8
+          sudo localectl set-locale LANG="fr_FR.UTF-8"
+          export LANG="fr_FR.UTF-8"
+          sudo update-locale
+          echo "Testing language settings"
+          echo "All languages..."
           locale -a
+          echo "Actual locale"
+          locale
       - name: Install dependencies
         run: |
           pip3 install -r requirements.txt
