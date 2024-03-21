@@ -40,7 +40,7 @@ def parse_page(html):
     soup    = BeautifulSoup(html, 'html.parser')
     entries = []
 
-    notable = soup.find('ul', class_='new-notable-items')    
+    notable = soup.find('ul', class_='contributor-articles-list')    
     #process notable items
     items = notable.find_all("li")
     for li in items:
@@ -55,24 +55,6 @@ def parse_page(html):
         #get the text content of the p in the h4 
         summary = li.find('p').get_text()
         
-        entry    = {'pubDate' : date, 'url' : link, 'title' : title, 'summary' : summary}
-        entries.append(entry)
-
-    main = soup.find('ul', class_='topic-related-content-list')
-    #process full list items
-    items = main.find_all("li")
-    for li in items:
-        #get the content of the span of class date
-        date = li.find('span', class_='date').get_text()
-
-        data = li.find('h3')
-        #get the link of the a in h3
-        link = data.find('a').get('href')
-        #get the text content the a of the h3
-        title= data.find('a').get_text()
-        #get the text content of the p in the h3 
-        summary = li.find('p').get_text()
-
         entry    = {'pubDate' : date, 'url' : link, 'title' : title, 'summary' : summary}
         entries.append(entry)
         
@@ -105,7 +87,7 @@ def main():
     locale.setlocale(locale.LC_TIME, '')
     # Save the output to a file
     fg.rss_str(pretty=True)
-    fg.rss_file('./LeMagIT-cybersecurite-rss.xml')
+    fg.rss_file('./TTGT-Authors-rss.xml')
 
 if __name__ == '__main__':
     main()
