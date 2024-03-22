@@ -64,7 +64,9 @@ def parse_page(html):
 def main():
 
     locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
-    entries = parse_page(fetch_page())
+    entries = []
+    for author in authors:
+        entries.append(parse_page(fetch_page(author)))
 
     fg = FeedGenerator()
     fg.id('https://raw.githubusercontent.com/TechTargetFR/Topical-RSS/main/TTGT-Authors-rss.xml')
