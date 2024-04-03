@@ -10,7 +10,7 @@ from feedgen.feed import FeedGenerator
 class FrenchParserInfo(parser.parserinfo):
     MONTHS = [
         ('Jan', 'Janvier'),
-        ('Fév', 'Février'),
+        ('Fév', 'Févr', 'Février'),
         ('Mar', 'Mars'),
         ('Avr', 'Avril'),
         ('Mai',),
