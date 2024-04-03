@@ -94,8 +94,9 @@ def main():
         fe.title(entry.get('title'))
         fe.description(entry.get('summary'), isSummary=True)
         fe.link( href=entry.get('url'), rel='self')
-        date = datetime.strptime(entry.get('pubDate'), '%d %b %Y')
-        date = pytz.utc.localize(date)
+#        date = datetime.strptime(entry.get('pubDate'), '%d %b %Y')
+#        date = pytz.utc.localize(date)
+        date = entry.get('pubDate')
         fe.pubDate(date.astimezone(pytz.timezone('CET')))
 
     locale.setlocale(locale.LC_TIME, '')
