@@ -4,7 +4,24 @@ import pytz
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+from dateutil import parser
 from feedgen.feed import FeedGenerator
+
+class FrenchParserInfo(parser.parserinfo):
+    MONTHS = [
+        ('Jan', 'Janvier'),
+        ('Fév', 'Février'),
+        ('Mar', 'Mars'),
+        ('Avr', 'Avril'),
+        ('Mai',),
+        ('Juin',),
+        ('Juil', 'Juillet'),
+        ('Aoû', 'Août'),
+        ('Sep', 'Septembre'),
+        ('Oct', 'Octobre'),
+        ('Nov', 'Novembre'),
+        ('Déc', 'Décembre'),
+    ]
 
 def fetch_page():
     resp = requests.get('https://www.lemagit.fr/ressources/Securite')
@@ -23,6 +40,7 @@ def parse_page(html):
     for li in items:
         #get the content of the span of class date
         date = li.find('span', class_='date').get_text()
+        date = parser.parse(date, FrenchParserInfo())
 
         data = li.find('h4')
         #get the link of the a in h4
