@@ -58,7 +58,7 @@ def parse_page(html):
     items = main.find_all('li')
     for li in items:
         #get the content of the span of class date
-        date = li.find('span', class_='date').get_text()
+        date = li.find('span', class_='datee').get_text()
         date = parser.parse(date, FrenchParserInfo())
 
         data = li.find('h3')
