@@ -36,7 +36,7 @@ def parse_page(html):
 
     notable = soup.find('ul', class_='new-notable-items')    
     #process notable items
-    items = notable.find_all("li")
+    items = notable.find_all('li', class_='new-notable-item')
     for li in items:
         #get the content of the span of class date
         date = li.find('span', class_='date').get_text()
@@ -55,7 +55,7 @@ def parse_page(html):
 
     main = soup.find('ul', class_='topic-related-content-list')
     #process full list items
-    items = main.find_all("li")
+    items = main.find_all('li')
     for li in items:
         #get the content of the span of class date
         date = li.find('span', class_='date').get_text()
