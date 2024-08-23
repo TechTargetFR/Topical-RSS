@@ -57,20 +57,20 @@ def parse_page(html):
     #process full list items
     items = main.find_all('li')
     for li in items:
-        #get the content of the span of class date
-        date = li.find('span', class_='date').get_text()
-        date = parser.parse(date, FrenchParserInfo())
+        if li.find('span', class_='date'):
+            date = li.find('span', class_='date').get_text()
+            date = parser.parse(date, FrenchParserInfo())
 
-        data = li.find('h3')
-        #get the link of the a in h3
-        link = data.find('a').get('href')
-        #get the text content the a of the h3
-        title= data.find('a').get_text()
-        #get the text content of the p in the h3 
-        summary = li.find('p').get_text()
+            data = li.find('h3')
+            #get the link of the a in h3
+            link = data.find('a').get('href')
+            #get the text content the a of the h3
+            title= data.find('a').get_text()
+            #get the text content of the p in the h3 
+            summary = li.find('p').get_text()
 
-        entry    = {'pubDate' : date, 'url' : link, 'title' : title, 'summary' : summary}
-        entries.append(entry)
+            entry    = {'pubDate' : date, 'url' : link, 'title' : title, 'summary' : summary}
+            entries.append(entry)
         
     entries.reverse()
     return entries
