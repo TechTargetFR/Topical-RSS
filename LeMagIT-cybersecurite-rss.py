@@ -17,7 +17,7 @@ class FrenchParserInfo(parser.parserinfo):
         ('Juin',),
         ('Juil', 'Juillet'),
         ('Aoû', 'Août'),
-        ('Sep', 'sept.', 'Septembre'),
+        ('Sep', 'sept', 'Septembre'),
         ('Oct', 'Octobre'),
         ('Nov', 'Novembre'),
         ('Déc', 'Décembre'),
